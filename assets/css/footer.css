@@ -1,0 +1,49 @@
+footer {
+  margin: auto;
+  justify-content: center;
+  max-width: 70vw;
+}
+
+ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  flex-wrap: wrap;
+  margin-top: 3.125rem;
+  margin-bottom: 0.3125rem;
+  padding: 0;
+}
+
+li {
+  margin: 0.5rem;
+  font-size: 0.7188rem;
+}
+
+li a {
+  color: #A1A1A1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lista2 {
+  margin-top: 0;
+}
+
+.lista2 img {
+  margin-left: 0.3125rem;
+}
+
+@media (min-width: 320px ) and (max-width:767px) {
+  body {
+    padding: 1.25rem;
+  }
+
+  footer {
+    max-width: 100vw;
+  }
+
+  ul {
+    margin-top: 1.25rem;
+  }
+}
